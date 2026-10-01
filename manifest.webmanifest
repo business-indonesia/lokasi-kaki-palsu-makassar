@@ -1,0 +1,22 @@
+{
+    "name": "Brand Audit Test",
+    "short_name": "Brand Audit Test",
+    "lang": "id-ID",
+    "start_url": "/",
+    "scope": "/",
+    "display": "fullscreen",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "https://lokasi.kakitanganpalsumakassar.com/favicon-48.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "https://lokasi.kakitanganpalsumakassar.com/favicon-48.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

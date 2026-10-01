@@ -1,0 +1,33 @@
+<?php
+declare(strict_types=1);
+$root=__DIR__; $configDir=$root.'/app'; $configPath=$configDir.'/config.php'; $storage=$root.'/storage'; $lockPath=$root.'/install.lock';
+$installed=is_file($configPath)||is_file($lockPath); $errors=[]; $done=false;
+function e(string $v):string{return htmlspecialchars($v,ENT_QUOTES,'UTF-8');}
+// Clean deployments need this entry point; configured installations must fail closed.
+if($installed){ @unlink(__FILE__); http_response_code(404); header('X-Robots-Tag: noindex, nofollow'); exit('Not Found'); }
+if(session_status()!==PHP_SESSION_ACTIVE){ @session_start(); }
+if(empty($_SESSION['install_csrf'])) $_SESSION['install_csrf']=bin2hex(random_bytes(32));
+$installCsrf=(string)$_SESSION['install_csrf'];
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ $postedCsrf=(string)($_POST['csrf']??'');
+ if($postedCsrf===''||!hash_equals($installCsrf,$postedCsrf)) $errors[]='Sesi instalasi tidak valid. Muat ulang halaman lalu coba lagi.';
+}
+if($_SERVER['REQUEST_METHOD']==='POST'&&!$installed&&!$errors){
+ $site=trim((string)($_POST['site_name']??'Lokasi Pelayanan Kaki Palsu')); $email=trim((string)($_POST['admin_email']??'')); $username=trim((string)($_POST['username']??'admin')); $pin=(string)($_POST['pin']??''); $pin2=(string)($_POST['pin2']??'');
+ if(!preg_match('/^.{3,80}$/u',$site))$errors[]='Nama website harus 3-80 karakter.';
+ if(!filter_var($email,FILTER_VALIDATE_EMAIL))$errors[]='Email admin belum valid. Gunakan email yang benar-benar dapat menerima pesan.';
+ if(!preg_match('/^.{3,64}$/u',$username))$errors[]='Username harus 3-64 karakter.';
+ if(!preg_match('/^\d{6}$/',$pin))$errors[]='PIN harus tepat 6 digit angka.';
+ if($pin!==$pin2)$errors[]='Konfirmasi PIN tidak sama.';
+ if(!$errors){
+  if(!is_dir($configDir))@mkdir($configDir,0750,true); foreach([$storage.'/analytics',$storage.'/logs'] as $d)if(!is_dir($d))@mkdir($d,0750,true);
+  $cfg=['admin'=>['username'=>$username,'email'=>$email,'pin_hash'=>password_hash($pin,PASSWORD_DEFAULT),'created_at'=>date('c'),'updated_at'=>date('c'),'session_secret'=>bin2hex(random_bytes(32))],'site'=>['url'=>'https://lokasi.kakitanganpalsumakassar.com','name'=>$site],'mail'=>['transport'=>'smtp','provider'=>'gmail','from_email'=>$email,'from_name'=>'Administrator','smtp_host'=>'smtp.gmail.com','smtp_port'=>465,'smtp_security'=>'ssl','smtp_username'=>$email,'smtp_password_enc'=>'','smtp_verified_at'=>'','smtp_verified_to'=>'','last_test_error'=>'']];
+  $php="<?php\nreturn ".var_export($cfg,true).";\n";
+  if(@file_put_contents($configPath,$php,LOCK_EX)===false)$errors[]='Tidak dapat membuat app/config.php. Periksa permission folder app.';
+  else{@chmod($configPath,0600);$settings=['site_name'=>$site,'site_tagline'=>'Pusat Layanan Pembuatan Kaki Palsu','site_description'=>'Informasi layanan kaki palsu, tangan palsu, jari palsu, dan alat bantu ortotik.','home_title'=>$site.' | Layanan Prostetik dan Ortotik','phone_display'=>'','whatsapp'=>'085394849766','site_url'=>'https://lokasi.kakitanganpalsumakassar.com','logo_url'=>'/assets/images/brand-mark.svg','favicon_url'=>'/favicon-48.png','og_image_url'=>'/assets/images/og/home-1200x630.png','og_logo_url'=>'/assets/images/brand-mark.svg'];@file_put_contents($storage.'/settings.json',json_encode($settings,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES),LOCK_EX);@file_put_contents($root.'/install.lock',date('c'),LOCK_EX);@chmod($root.'/install.lock',0600);@unlink(__FILE__);header('Location: /admin/login.php',true,303);exit;}
+ }
+}
+?><!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="robots" content="noindex,nofollow"><title>Instalasi - Administrator</title>
+<link rel="stylesheet" href="/assets/css/minimal.css">
+<link rel="manifest" href="/manifest.webmanifest">
+</head><body><a class="skip-link" href="#main-content">Lewati ke konten utama</a><main id="main-content" class="install-shell"><div class="install-frame"><div><div><strong>Administrator</strong><span>Instalasi awal aplikasi</span></div></div><div aria-label="Kemajuan instalasi"><span aria-current="step">1</span><span>Langkah 1 dari 1</span></div><?php if($done):?><section><div>OK</div><div>Instalasi selesai</div><h1>Administrator siap digunakan.</h1><p>Akun administrator sudah dibuat. Email <strong><?=e($email)?></strong> akan digunakan untuk pemulihan PIN.</p><div><strong>Lebih mudah, lebih aman</strong><span>Tidak ada Recovery Code. Saat lupa PIN, sistem akan membuat PIN baru dan mengirimkannya ke email admin.</span></div><a href="/admin/login.php">BUKA LOGIN</a></section><?php elseif($installed):?><section><div>OK</div><div>Sudah terpasang</div><h1>Administrator</h1><p>Aplikasi sudah terinstal. Silakan masuk atau gunakan Lupa PIN jika diperlukan.</p><a href="/admin/login.php">BUKA LOGIN</a></section><?php else:?><section><div><div>Selamat datang</div><h1>Administrator</h1><p>Instalasi cepat untuk menyiapkan brand website, akun admin, dan publikasi konten.</p><div><span>OK Hanya perlu beberapa data</span><span>OK Tidak membutuhkan MySQL</span><span>OK Pemulihan PIN melalui email</span><span>OK Ringan dan mudah untuk pemula</span></div></div><div><h2>Buat akun admin</h2><?php foreach($errors as $x):?><div role="alert"><?=e($x)?></div><?php endforeach;?><form method="post" autocomplete="off"><input type="hidden" name="csrf" value="<?=e($installCsrf)?>"><label><span>Nama Website</span><input name="site_name" value="<?=e($_POST['site_name']??'Lokasi Pelayanan Kaki Palsu')?>" required></label><label><span>Email Admin</span><input type="email" name="admin_email" value="<?=e($_POST['admin_email']??'')?>" autocomplete="email" placeholder="admin@domainanda.com" required><small>Email ini menjadi tujuan pemulihan PIN admin.</small></label><label><span>Username Admin</span><input name="username" value="<?=e($_POST['username']??'admin')?>" autocomplete="username" required></label><label><span>PIN Admin - 6 digit</span><input type="password" name="pin" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="new-password" required></label><label><span>Ulangi PIN</span><input type="password" name="pin2" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="new-password" required></label><button type="submit">LANJUTKAN -</button></form><p id="install-status" role="status" aria-live="polite"></p></div></section><?php endif;?><p>© <?=date('Y')?> Administrator - Kelola website dengan lebih mudah.</p></div></main></body></html>

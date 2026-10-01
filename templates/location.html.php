@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Generated from templates/location.html.php; edit data/templates, not this file. -->
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="build-stamp" content="4.54.17-v45.7"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="yes" name="mobile-web-app-capable"/><meta content="yes" name="apple-mobile-web-app-capable"/>
+<title>Kaki Palsu di {{LOCATION_NAME}}, {{PROVINCE_NAME}} | Layanan &amp; Konsultasi</title>
+<meta content="Panduan layanan kaki palsu untuk masyarakat {{LOCATION_NAME}}, {{PROVINCE_NAME}}: cara memulai konsultasi, persiapan, alur sebelum ke workshop Mandai, dan cara menghubungi Pusat Layanan Kaki Palsu." name="description"/>
+<meta content="kaki palsu {{LOCATION_NAME}}, layanan kaki palsu {{LOCATION_NAME}}, konsultasi kaki palsu {{LOCATION_NAME}}, kaki palsu {{PROVINCE_NAME}}, layanan kaki palsu Indonesia" name="keywords"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<link href="https://lokasi.kakitanganpalsumakassar.com/lokasi-pelayanan/{{PROVINCE_SLUG}}/{{LOCATION_SLUG}}/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Lokasi Pelayanan Kaki Palsu" property="og:site_name"/>
+<meta content="Kaki Palsu di {{LOCATION_NAME}}, {{PROVINCE_NAME}} | Layanan &amp; Konsultasi" property="og:title"/>
+<meta content="Panduan layanan kaki palsu untuk masyarakat {{LOCATION_NAME}}, {{PROVINCE_NAME}}: cara memulai konsultasi, persiapan, alur sebelum ke workshop Mandai, dan cara menghubungi Pusat Layanan Kaki Palsu." property="og:description"/>
+<meta content="https://lokasi.kakitanganpalsumakassar.com/lokasi-pelayanan/{{PROVINCE_SLUG}}/{{LOCATION_SLUG}}/" property="og:url"/>
+<meta property="og:image" content="https://lokasi.kakitanganpalsumakassar.com/assets/images/og/wilayah/{{OG_IMAGE_FILE}}">
+<meta content="Informasi layanan kaki palsu berdasarkan wilayah" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Kaki Palsu di {{LOCATION_NAME}}, {{PROVINCE_NAME}} | Layanan &amp; Konsultasi" name="twitter:title"/>
+<meta content="Panduan layanan kaki palsu untuk masyarakat {{LOCATION_NAME}}, {{PROVINCE_NAME}}: cara memulai konsultasi, persiapan, alur sebelum ke workshop Mandai, dan cara menghubungi Pusat Layanan Kaki Palsu." name="twitter:description"/>
+<meta name="twitter:image" content="https://lokasi.kakitanganpalsumakassar.com/assets/images/og/wilayah/{{OG_IMAGE_FILE}}">
+
+{{SCHEMA}}
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/favicon-180.png" sizes="180x180">
+
+<link rel="stylesheet" href="/assets/css/minimal.css">
+<link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+<div class="site-app">
+<input class="sidebar-switch" id="site-sidebar-toggle" type="checkbox"><label class="sidebar-toggle" for="site-sidebar-toggle" aria-label="Tampilkan atau sembunyikan menu samping" title="Tampilkan / sembunyikan menu"></label>
+<header class="app-topbar">
+  <a class="topbar-brand" href="/" aria-label="Pusat Layanan Pembuatan Kaki Palsu"><img data-site-logo src="/assets/images/brand-mark.svg" alt="" width="40" height="40"><span>Pusat Layanan</span></a>
+  <input class="search-switch" id="site-search-toggle" type="checkbox"><label class="search-toggle" for="site-search-toggle" aria-label="Tampilkan atau sembunyikan pencarian" title="Tampilkan / sembunyikan pencarian"><span aria-hidden="true">⌕</span><span class="search-toggle-text">Cari</span></label><form class="topbar-search" action="/cari/" method="get" role="search"><label class="sr-only" for="global-q">Cari wilayah atau layanan</label><span class="search-mark" aria-hidden="true">⌕</span><input id="global-q" name="q" type="search" placeholder="Cari wilayah atau layanan" autocomplete="off"><button class="search-submit" type="submit" aria-label="Mulai pencarian">Cari</button></form>
+  
+  <details class="mobile-nav-toggle"><summary aria-label="Buka menu">Menu</summary><nav aria-label="Navigasi utama"><a href="/"><span class="nav-mark" aria-hidden="true">01</span><span>Beranda</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/#layanan"><span class="nav-mark" aria-hidden="true">02</span><span>Layanan</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/#proses"><span class="nav-mark" aria-hidden="true">03</span><span>Proses</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/panduan/"><span class="nav-mark" aria-hidden="true">04</span><span>Panduan</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/artikel/"><span class="nav-mark" aria-hidden="true">05</span><span>Artikel</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/lokasi-pelayanan/sulawesi-selatan/" aria-current="page"><span class="nav-mark" aria-hidden="true">06</span><span>Wilayah</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/cari/"><span class="nav-mark" aria-hidden="true">07</span><span>Cari</span><span class="nav-arrow" aria-hidden="true">›</span></a></nav><a class="mobile-cta" href="https://wa.me/6285394849766?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20prostesis%20atau%20alat%20bantu." target="_blank" rel="noopener noreferrer">Konsultasi WhatsApp</a></details>
+</header>
+<aside class="site-sidebar" aria-label="Navigasi situs">
+  <div class="sidebar-heading"><span>Menu</span><span class="sidebar-count" aria-hidden="true">07</span></div>
+  <nav aria-label="Navigasi utama"><a href="/"><span class="nav-mark" aria-hidden="true">01</span><span>Beranda</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/#layanan"><span class="nav-mark" aria-hidden="true">02</span><span>Layanan</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/#proses"><span class="nav-mark" aria-hidden="true">03</span><span>Proses</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/panduan/"><span class="nav-mark" aria-hidden="true">04</span><span>Panduan</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/artikel/"><span class="nav-mark" aria-hidden="true">05</span><span>Artikel</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/lokasi-pelayanan/sulawesi-selatan/" aria-current="page"><span class="nav-mark" aria-hidden="true">06</span><span>Wilayah</span><span class="nav-arrow" aria-hidden="true">›</span></a><a href="/cari/"><span class="nav-mark" aria-hidden="true">07</span><span>Cari</span><span class="nav-arrow" aria-hidden="true">›</span></a></nav>
+  <div class="sidebar-help"><small>Butuh arahan?</small><a href="https://wa.me/6285394849766?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20prostesis%20atau%20alat%20bantu." target="_blank" rel="noopener noreferrer">Konsultasi WhatsApp</a></div>
+  <small class="sidebar-meta">Prostetik · ortotik</small>
+</aside>
+<div class="site-content">
+
+<header class="page-header"><p>Direktori wilayah dan layanan</p></header>
+<main id="main-content"><div><nav aria-label="Breadcrumb"><a href="/">Beranda</a><span aria-hidden="true"> / </span><a href="/lokasi-pelayanan/{{PROVINCE_SLUG}}/">{{PROVINCE_NAME}}</a><span aria-hidden="true"> / </span><span aria-current="page">{{LOCATION_NAME}}</span></nav><div><div><section>
+<span>Kabupaten/Kota - {{PROVINCE_NAME}}</span>
+<h1>Kaki Palsu di {{LOCATION_NAME}}</h1>
+<p>Informasi layanan dan konsultasi kaki palsu untuk masyarakat di <strong>{{LOCATION_NAME}}</strong>, {{PROVINCE_NAME}}.</p><p><strong>Workshop utama:</strong> Mandai, Maros, Sulawesi Selatan.</p>
+<dl aria-label="Data wilayah">
+  <div><dt>Kabupaten/Kota</dt><dd>{{LOCATION_NAME}}</dd></div>
+  <div><dt>Provinsi</dt><dd>{{PROVINCE_NAME}}</dd></div>
+  <div><dt>Kode wilayah</dt><dd>{{LOCATION_CODE}}</dd></div>
+</dl>
+<figure><div class="brand-image-frame brand-image-frame--regional"><img alt="Peta wilayah {{LOCATION_NAME}}, {{PROVINCE_NAME}}" decoding="async" fetchpriority="high" height="450" loading="eager" src="/assets/images/og/wilayah/{{OG_IMAGE_FILE}}" width="800"/><span class="brand-image-logo-sync" data-brand-og-logo aria-hidden="true"></span></div><figcaption>Panduan wilayah dan langkah konsultasi kaki palsu untuk masyarakat di {{LOCATION_NAME}}.</figcaption></figure></section>
+<details><summary>Daftar Isi</summary><ul><li><a href="#jawaban-singkat">Jawaban singkat</a></li>
+<li><a href="#alur">Alur konsultasi</a></li>
+<li><a href="#persiapan">Checklist persiapan</a></li>
+<li><a href="#wilayah-terkait">Wilayah terkait</a></li>
+<li><a href="#pertanyaan">FAQ</a></li>
+<li><a href="#cluster-layanan">Panduan terkait</a></li></ul></details>{{SECTION_JAWABAN-SINGKAT}}
+{{SECTION_ALUR}}
+{{SECTION_PERSIAPAN}}
+{{SECTION_WILAYAH-TERKAIT}}
+{{SECTION_PERTANYAAN}}<section aria-labelledby="cluster-layanan-title" id="cluster-layanan"><div><div>PANDUAN TERKAIT</div><h2 id="cluster-layanan-title">Pertanyaan sebelum membuat prostesis</h2><p>Jika Anda mencari layanan dari {{LOCATION_NAME}}, gunakan panduan produk dan pusat pertanyaan untuk memahami apa yang perlu ditanyakan sebelum konsultasi.</p></div><div><a href="/panduan/kaki-palsu/">Kaki palsu</a> <a href="/panduan/tangan-palsu/">Tangan palsu</a> <a href="/panduan/jari-palsu/">Jari palsu</a> <a href="/panduan/pertanyaan-kaki-palsu/">12 pertanyaan kaki palsu</a></div></section>{{SECTION_KESIMPULAN}}</div></div></div></main>
+
+<footer class="site-footer"><div class="footer-brand"><strong>Pusat Layanan Pembuatan Kaki Palsu</strong><small>Kaki palsu · tangan palsu · jari palsu · alat bantu ortotik</small></div><nav class="footer-nav" aria-label="Informasi"><a href="/kebijakan-privasi.html">Privasi</a><a href="/syarat-ketentuan.html">Syarat &amp; Ketentuan</a><a href="/hak-cipta.html">Hak Cipta</a></nav><small class="footer-note">© 2026 Pusat Layanan Pembuatan Kaki Palsu. Informasi ini membantu persiapan konsultasi dan bukan pengganti pemeriksaan tenaga kesehatan.</small></footer>
+</div>
+</div>
+</body>
+</html>

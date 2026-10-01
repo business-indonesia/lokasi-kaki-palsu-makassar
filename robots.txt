@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lokasi.kakitanganpalsumakassar.com/sitemap.xml

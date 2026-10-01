@@ -1,0 +1,49 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<FilesMatch "^(config\.php|.*\.sql)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: blob: https:; font-src 'none'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com; frame-src 'none'"
+  Header always set Clear-Site-Data "\"cache\", \"storage\""
+  # HTML/PHP is private/no-store by default; static assets are cached positively below.
+  <FilesMatch "\.(?:html|php)$">
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, private"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# Never expose application internals or stored analytics.
+RewriteEngine On
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+ErrorDocument 503 /maintenance.html
+RewriteRule ^lokasi-pelayanan/dki-jakarta/?$ /lokasi-pelayanan/daerah-khusus-jakarta/ [R=301,L,NE]
+RewriteRule ^(app|storage)(/|$) - [F,L]
+RewriteRule ^(?:admin|maintenance\.html|install\.php)(?:/|$) - [END]
+RewriteCond %{DOCUMENT_ROOT}/storage/maintenance.flag -f
+RewriteRule ^ /maintenance.html [END]
+
+# Privacy/performance contract: do not persist browser HTTP cache for this deployment.
+<IfModule mod_headers.c>
+  Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, private"
+  Header always set Pragma "no-cache"
+  Header always set Expires "0"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml application/wasm
+</IfModule>
+
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
